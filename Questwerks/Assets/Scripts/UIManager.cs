@@ -7,7 +7,7 @@ using UnityEditor.SceneManagement;
 public class UIManager : MonoBehaviour {
 
 	// Reference to GameManager instance
-	public GameManager gameManager;
+	private GameManager gameManager;
 
 	// Reference to Main Menu object
 	public GameObject mainMenu;
@@ -18,13 +18,14 @@ public class UIManager : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		gameManager = GameObject.FindObjectOfType<GameManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// Check for game end state
 		if (gameManager.isGameOver()) {
+			mainMenu.SetActive(true);
 			pauseText.enabled = false;
 			winText.enabled = true;
 
